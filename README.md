@@ -1,27 +1,49 @@
-# PCP Industrial Client Portal (Legacy Archive)
+# PCP: portal Laravel de clientes industriales (archivo histórico)
 
-[![Unified Monorepo](https://img.shields.io/badge/Unified%20Monorepo-pcp-industrial-wholesale-ecommerce-blue.svg)](https://github.com/KevinAndrey96/pcp-industrial-wholesale-ecommerce)
-[![Status: Historical Archive](https://img.shields.io/badge/Status-Historical%20Archive-lightgrey.svg)](https://github.com/KevinAndrey96/pcp-industrial-wholesale-ecommerce)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/KevinAndrey96/pcp-industrial-wholesale-ecommerce/blob/master/LICENSE)
+![Estado: archivo histórico](https://img.shields.io/badge/Estado-archivo%20hist%C3%B3rico-lightgrey) ![Laravel 8](https://img.shields.io/badge/Laravel%208-FF2D20) ![PHP 7.4+](https://img.shields.io/badge/PHP%207.4%2B-777BB4) ![MySQL](https://img.shields.io/badge/MySQL-4479A1)
 
-> [!IMPORTANT]
-> **This repository is preserved as a historical component archive.**
-> Development, maintenance, and full-stack containerization have been unified into the flagship production monorepo:
->
-> 🚀 **[KevinAndrey96/pcp-industrial-wholesale-ecommerce](https://github.com/KevinAndrey96/pcp-industrial-wholesale-ecommerce)**
->
-> Please refer to the main repository for the complete architecture, Docker Compose orchestration, automated test suites, and active documentation.
+> [!NOTE]
+> Código original del portal B2B de PCP que conectaba distribuidores, ferreterías y clientes industriales (2022). Evolucionó a partir del portal de distribuidores. El producto continúa en **[pcp-industrial-wholesale-ecommerce](https://github.com/KevinAndrey96/pcp-industrial-wholesale-ecommerce)**, que reúne todos sus componentes con documentación actualizada.
 
----
+## Qué contiene
 
-## 📌 Historical Overview
+- Listas de precios por cliente, asignación de lista a cada usuario y catálogo con importación y exportación a Excel.
+- Pedidos con ciudad de entrega, cambio de estado, devoluciones y transferencias.
+- Cotizaciones y documentos en PDF con DomPDF.
+- Gestión de distribuidores y ferreterías, su asociación e importación masiva de usuarios.
+- Usuarios con documento de identidad y cambio de contraseña.
 
-This repository preserves the historical B2B hardware store client portal component originally developed for the PCP Wholesale E-Commerce Platform. It allowed industrial distributors and ferreterias to request negotiated price quotes.
+## Stack original
 
-All components, database schemas, and workflows have been merged and modernized into the primary repository: **[pcp-industrial-wholesale-ecommerce](https://github.com/KevinAndrey96/pcp-industrial-wholesale-ecommerce)**.
+| Componente | Tecnología |
+| :--- | :--- |
+| Framework | Laravel 8 |
+| Lenguaje | PHP 7.4 u 8.0 |
+| Base de datos | MySQL |
+| Librerías | Laravel Excel, DomPDF, BBCode, Laravel Mix |
 
----
+## Ejecutarlo localmente
 
-## 📄 License
+```bash
+cp .env.example .env    # completa DB_* y MAIL_* con valores locales
+composer install        # vendor/ no se versiona
+php artisan key:generate
+php artisan migrate
+php artisan serve       # http://localhost:8000
+```
 
-This historical archive is part of the project licensed under the MIT License. See the main repository for details.
+Requiere PHP 7.4 u 8.0, Composer 2 y MySQL. Laravel 8 dejó de recibir parches de seguridad en enero de 2023.
+
+## Estado del repositorio
+
+- Se conserva sin cambios funcionales como referencia del código original (2022).
+- No recibe actualizaciones de dependencias; el mantenimiento ocurre en [pcp-industrial-wholesale-ecommerce](https://github.com/KevinAndrey96/pcp-industrial-wholesale-ecommerce).
+- En noviembre de 2026 se depuró el historial completo: se retiraron `vendor/` y `node_modules/`, `.idea/` y el `.env` con credenciales. Todos los commits conservan su fecha original.
+
+## Autoría
+
+Kevin Andrey Herrera Silva ([@KevinAndrey96](https://github.com/KevinAndrey96)), con aportes de Cristian Delgado.
+
+## Licencia
+
+Código desarrollado para un cliente y publicado como muestra de portafolio. No incluye licencia de código abierto: todos los derechos reservados.
